@@ -136,6 +136,10 @@ Compatibility
 -
 The widget has been tested on IE 7 and 8, Opera 11, Firefox 3.6 and 4, Google Chrome 8 and 10, Safari 5 on Windows and Mac OS X. It requires Mootools version 1.2 or 1.3. In case of 1.3 please use version with compatibility code.
 
+Demo
+-
+See the plugin in action at http://weeby.pl/blog/autocompleter/
+
 License
 -
 BSD License
