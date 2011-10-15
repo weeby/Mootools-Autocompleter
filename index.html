@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Mootools Autocompleter Demo</title>
+        <script type="text/javascript" src="static/js/mootools-core-1.3-full-compat.js"></script>
+        <script type="text/javascript" src="static/js/mootools-autocompleter.js"></script>
+		<script type="text/javascript" src="options.js"></script>
+        <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+        
+        <script type="text/javascript">
+            window.addEvent('domready', function() {
+                var input = $('inputIcon');
+                
+                var dataSource = function(ui, term) {
+					var result = [];
+					var regex = new RegExp(term, 'i');
+					
+                    Array.each(window.autocompleter_options, function(item, index) {
+						if (regex.test(item.label) == true) {
+							result.push(item);
+						}
+					});
+					
+					return result;
+                } // eof dataSource()
+                
+                var options = {
+                    'source': dataSource,
+                    'onCreate': function(ui) {
+                        var menu = ui.autocompleter('menu');
+                        var coords = ui.getCoordinates();
+                        
+                        menu.setPosition({ x: coords.left, y: coords.top + coords.height + 1 });
+                    }
+                };
+                input.autocompleter(options);
+                
+                input.autocompleter('option', 'onChange', function(ui) {
+                        $('inputValue').set('value', (ui.autocompleter('value') == '') ? '?' : ui.autocompleter('value'));
+                    } // eof onChange()
+                );
+            });
+        </script>
+    </head>
+    
+    <body>
+        <div id="wrap">
+            <h1>Mootools Autocompleter</h1>
+            <div class="input text">
+                <label>Choose an icon:</label>
+                <input id="inputIcon" type="text" name="icon" />
+            </div>
+            <div class="input text">
+                <label>ID of chosen element:</label>
+                <input id="inputValue" disabled="disabled" type="text" />
+            </div>
+        </div>
+		
+		<div id="footer">Designed by <a href="http://www.weebystudio.com/">Weeby</a> &bull; <a href="https://github.com/weeby/Mootools-Autocompleter">Fork me on GitHub</a></div>
+    </body>
+</html>
