@@ -138,7 +138,7 @@ The widget has been tested on IE 7 and 8, Opera 11, Firefox 3.6 and 4, Google Ch
 
 Demo
 -
-See the plugin in action at http://weeby.pl/blog/autocompleter/
+See the plugin in action at http://weeby.github.com/Mootools-Autocompleter/
 
 License
 -
